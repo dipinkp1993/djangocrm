@@ -5,8 +5,19 @@ from .models import *
 from  .forms import *
 from .filters import OrderFilter
 from django.core.paginator import Paginator
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
-
+def register(request):
+	form = UserCreationForm
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+	context = {'form': form}
+	return render(request, 'accounts/register.html',context)
+def login(request):
+	return render(request, 'accounts/login.html')
 def home(request):
 	orders = Order.objects.all()
 	customers = Customer.objects.all()
@@ -77,5 +88,6 @@ def deleteOrder(request):
 		return redirect('/')
 	else:
 		return redirect('/')
+
 
 
