@@ -8,9 +8,9 @@ from django.core.paginator import Paginator
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 def register(request):
-	form = UserCreationForm
+	form = CreateUserForm
 	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
+		form = CreateUserForm(request.POST)
 		if form.is_valid():
 			form.save()
 			return redirect('/')
