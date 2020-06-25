@@ -4,6 +4,7 @@ from django.forms import inlineformset_factory
 from .models import *
 from  .forms import *
 from .filters import OrderFilter
+from django.core.paginator import Paginator
 # Create your views here.
 
 def home(request):
@@ -20,7 +21,10 @@ def home(request):
 
 def products(request):
 	products = Product.objects.all()
-	return render(request, 'accounts/products.html',{'products':products})
+	paginator = Paginator(products, 2)
+	page_number = request.GET.get('page')
+	page_obj = paginator.get_page(page_number)
+	return render(request, 'accounts/products.html',{'page_obj': page_obj})
 
 def customer(request, pk_test):
 	customer = Customer.objects.get(id=pk_test)
