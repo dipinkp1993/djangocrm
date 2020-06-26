@@ -1,0 +1,1 @@
+web: gunicorn crm1:wsg1 --log-file -
