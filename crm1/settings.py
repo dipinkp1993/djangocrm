@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'crm1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
 
     'default': {
 
@@ -95,8 +95,26 @@ DATABASES = {
 
     }
 
-}
+}'''
+DATABASES = {
 
+    'default': {
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'dbilat8ee9hn73',
+
+        'USER': 'xrtqknglzphbzu',
+
+        'PASSWORD': '286ec4fe6f1599d21b478eef71cdbe2781e2a99e479644e0593d5fd93f2cf0db',
+
+        'HOST': 'ec2-52-202-66-191.compute-1.amazonaws.com',
+
+        'PORT': "5432",
+
+    }
+
+}
 
 
 # Password validation
